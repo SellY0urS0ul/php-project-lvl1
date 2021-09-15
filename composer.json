@@ -14,12 +14,8 @@
     "require": {
         "wp-cli/php-cli-tools": "^0.11.13"
     },
-    "autoload": {
-        "psr-4": {
-            "Hexlet\\Project\\Lvl-1": "src/"
-        },
-        "files": [
-            "src/Cli.php"
-        ]
+    "autoload": { 
+        "files": [ 
+            "src/Cli.php" ]
     }
 }
