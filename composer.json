@@ -17,7 +17,9 @@
     },
     "autoload": { 
         "files": [ 
-            "src/Cli.php" ]
+            "src/Cli.php",
+            "src/Even.php"
+        ]
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.6"
