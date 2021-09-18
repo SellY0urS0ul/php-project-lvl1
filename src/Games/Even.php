@@ -1,6 +1,6 @@
 <?php
 
-namespace Src\Even;
+namespace Src\Games\Even;
 
 use function cli\line;
 use function cli\prompt;
@@ -12,7 +12,7 @@ function isEvenNumber()
     line("Hello, %s!", $name);
     line('Answer "yes" if the number is even, otherwise answer "no".');
     for ($i = 0, $j = 0; $i < 3 && $j === 0; $i++) {
-        $randomNumber = rand(0, 100);
+        $randomNumber = rand(1, 100);
         line("Question: %s", $randomNumber);
         $answer = prompt('Your answer: ');
         if (($randomNumber % 2) == 0 && $answer === 'yes') {
@@ -27,6 +27,10 @@ function isEvenNumber()
             $j++;
         } elseif (($randomNumber % 2) != 0 && $answer === 'no') {
             line('Correct!');
+        } else {
+            line("This is wrong answer");
+            line("Let's try again, %s", $name);
+            $j++;
         }
         if ($i == 2) {
             line("Congratulations, %s!", $name);
