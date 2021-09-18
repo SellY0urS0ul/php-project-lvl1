@@ -13,7 +13,7 @@ function calc()
     line('What is the result of the expression?');
     for ($i = 0, $j = 0; $i < 3 && $j === 0; $i++) {
         $firstNumber = rand(1, 10);
-        $secondNumber = rand (1, 10);
+        $secondNumber = rand(1, 10);
         $mathArr = [' + ' , ' * '];
         $randomMath = array_rand($mathArr);
         $question = "{$firstNumber}{$mathArr[$randomMath]}{$secondNumber}";
