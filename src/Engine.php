@@ -5,14 +5,14 @@ namespace Src\Engine;
 use function cli\line;
 use function cli\prompt;
 
-function greeting()
+function greeting(): string
 {
     line('Welcome to the Brain Game!');
     $name = prompt('May I have your name?');
     line("Hello, %s!", $name);
     return $name;
 }
-function isRightAnswer($answer, $rightAnswer, $name, $j)
+function isRightAnswer($answer, $rightAnswer, $name, $j): int
 {
     if ($answer == $rightAnswer) {
         line('Correct!');
@@ -23,13 +23,13 @@ function isRightAnswer($answer, $rightAnswer, $name, $j)
     }
     return $j;
 }
-function congratulations($j, $name)
+function congratulations($j, $name): int
 {
     if ($j == 0) {
         line("Congratulations, %s!", $name);
     }
 }
-function question($question)
+function question($question): string
 {
     line("Question: %s", $question);
     $answer = prompt('Your answer');
