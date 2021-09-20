@@ -4,12 +4,14 @@ namespace Src\Games\Calc;
 
 use function cli\line;
 use function cli\prompt;
+use function Src\Engine\greeting;
+use function Src\Engine\isRightAnswer;
+use function Src\Engine\congratulations;
+use function Src\Engine\question;
 
 function calc()
 {
-    line('Welcome to the Brain Game!');
-    $name = prompt('May I have your name?');
-    line("Hello, %s!", $name);
+    $name = greeting();
     line('What is the result of the expression?');
     for ($i = 0, $j = 0; $i < 3 && $j === 0; $i++) {
         $firstNumber = rand(1, 10);
@@ -22,17 +24,8 @@ function calc()
         } else {
             $rightAnswer = $firstNumber * $secondNumber;
         }
-        line("Question: %s", $question);
-        $answer = prompt('Your answer');
-        if ($answer == $rightAnswer) {
-            line('Correct!');
-        } else {
-            line("{$answer} is wrong answer ;(. Correct answer was {$rightAnswer}.");
-            line("Let's try again, %s", $name);
-            $j++;
-        }
-        if ($i == 2) {
-            line("Congratulations, %s!", $name);
-        }
+        $answer = question($question);
+        $j = isRightAnswer($answer, $rightAnswer, $name, $j, $i);
     }
+    $j = congratulations($j, $name);
 }

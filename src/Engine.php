@@ -12,3 +12,26 @@ function greeting()
     line("Hello, %s!", $name);
     return $name;
 }
+function isRightAnswer($answer, $rightAnswer, $name, $j)
+{
+    if ($answer == $rightAnswer) {
+        line('Correct!');
+    } else {
+        line("'{$answer}' is wrong answer ;(. Correct answer was '{$rightAnswer}'.");
+        line("Let's try again, %s", $name);
+        $j++;
+    }
+    return $j;
+}
+function congratulations($j, $name)
+{
+    if ($j == 0) {
+        line("Congratulations, %s!", $name);
+    }
+}
+function question($question)
+{
+    line("Question: %s", $question);
+    $answer = prompt('Your answer');
+    return $answer;
+}

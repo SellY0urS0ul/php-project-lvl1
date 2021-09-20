@@ -4,36 +4,24 @@ namespace Src\Games\Even;
 
 use function cli\line;
 use function cli\prompt;
+use function Src\Engine\greeting;
+use function Src\Engine\isRightAnswer;
+use function Src\Engine\congratulations;
+use function Src\Engine\question;
 
 function isEvenNumber()
 {
-    line('Welcome to the Brain Game!');
-    $name = prompt('May I have your name?');
-    line("Hello, %s!", $name);
+    $name = greeting();
     line('Answer "yes" if the number is even, otherwise answer "no".');
     for ($i = 0, $j = 0; $i < 3 && $j === 0; $i++) {
         $randomNumber = rand(1, 100);
-        line("Question: %s", $randomNumber);
-        $answer = prompt('Your answer');
-        if (($randomNumber % 2) == 0 && $answer === 'yes') {
-            line('Correct!');
-        } elseif (($randomNumber % 2) == 0 && $answer === 'no') {
-            line("'no' is wrong answer ;(. Correct answer was 'yes'.");
-            line("Let's try again, %s", $name);
-            $j++;
-        } elseif (($randomNumber % 2) != 0 && $answer === 'yes') {
-            line("'yes' is wrong answer ;(. Correct answer was 'no'.");
-            line("Let's try again, %s", $name);
-            $j++;
-        } elseif (($randomNumber % 2) != 0 && $answer === 'no') {
-            line('Correct!');
+        $answer = question($question);
+        if (($randomNumber % 2) == 0) {
+            $rightAnswer = 'yes';
         } else {
-            line("This is wrong answer");
-            line("Let's try again, %s", $name);
-            $j++;
+            $rightAnswer = 'no';
         }
-        if ($i == 2) {
-            line("Congratulations, %s!", $name);
-        }
+        $j = isRightAnswer($answer, $rightAnswer, $name, $j);
     }
+    $j = congratulations($j, $name);
 }
