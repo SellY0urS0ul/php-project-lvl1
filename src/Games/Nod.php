@@ -9,7 +9,7 @@ use function Src\Engine\isRightAnswer;
 use function Src\Engine\congratulations;
 use function Src\Engine\question;
 
-function nod()
+function nod(): bool
 {
     $name = greeting();
     line('Find the greatest common divisor of given numbers.');
@@ -28,5 +28,6 @@ function nod()
         $answer = question($question);
         $j = isRightAnswer($answer, $rightAnswer, $name, $j);
     }
-    $j = congratulations($j, $name);
+    $end = congratulations($j, $name);
+    return true;
 }

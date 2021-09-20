@@ -9,7 +9,7 @@ use function Src\Engine\isRightAnswer;
 use function Src\Engine\congratulations;
 use function Src\Engine\question;
 
-function progression()
+function progression(): bool
 {
     $name = greeting();
     line('What number is missing in the progression?');
@@ -30,5 +30,6 @@ function progression()
         $answer = question($question);
         $j = isRightAnswer($answer, $rightAnswer, $name, $j);
     }
-    $j = congratulations($j, $name);
+    $end = congratulations($j, $name);
+    return true;
 }

@@ -9,7 +9,7 @@ use function Src\Engine\isRightAnswer;
 use function Src\Engine\congratulations;
 use function Src\Engine\question;
 
-function calc()
+function calc(): bool
 {
     $name = greeting();
     line('What is the result of the expression?');
@@ -29,5 +29,6 @@ function calc()
         $answer = question($question);
         $j = isRightAnswer($answer, $rightAnswer, $name, $j);
     }
-    $j = congratulations($j, $name);
+    $end = congratulations($j, $name);
+    return true;
 }

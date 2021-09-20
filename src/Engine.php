@@ -23,12 +23,12 @@ function isRightAnswer(string $answer, string $rightAnswer, string $name, int $j
     }
     return $j;
 }
-function congratulations(int $j, string $name)
+function congratulations(int $j, string $name): bool
 {
     if ($j == 0) {
         line("Congratulations, %s!", $name);
     }
-    return null;
+    return true;
 }
 function question(string $question): string
 {

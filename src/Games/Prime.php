@@ -9,13 +9,13 @@ use function Src\Engine\isRightAnswer;
 use function Src\Engine\congratulations;
 use function Src\Engine\question;
 
-function isPrime()
+function isPrime(): bool
 {
     $name = greeting();
     line('Answer "yes" if given number is prime. Otherwise answer "no".');
     for ($i = 0, $j = 0; $i < 3 && $j === 0; $i++) {
         $num = rand(1, 100);
-        $question = $num;
+        $question = "{$num}";
         $rightAnswer = 'yes';
         for ($k = 2; $k <= sqrt($num); $k++) {
             if ($num % $k == 0) {
@@ -25,5 +25,6 @@ function isPrime()
         $answer = question($question);
         $j = isRightAnswer($answer, $rightAnswer, $name, $j);
     }
-    $j = congratulations($j, $name);
+    $end = congratulations($j, $name);
+    return true;
 }
