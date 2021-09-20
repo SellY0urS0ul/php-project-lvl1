@@ -18,7 +18,7 @@ function isRightAnswer($answer, $rightAnswer, $name, $j)
         line('Correct!');
     } else {
         line("'{$answer}' is wrong answer ;(. Correct answer was '{$rightAnswer}'.");
-        line("Let's try again, %s", $name);
+        line("Let's try again, %s!", $name);
         $j++;
     }
     return $j;
