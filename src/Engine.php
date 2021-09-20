@@ -23,7 +23,7 @@ function isRightAnswer($answer, $rightAnswer, $name, $j): int
     }
     return $j;
 }
-function congratulations($j, $name): int
+function congratulations($j, $name)
 {
     if ($j == 0) {
         line("Congratulations, %s!", $name);
