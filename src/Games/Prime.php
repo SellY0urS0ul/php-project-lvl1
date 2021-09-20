@@ -12,8 +12,9 @@ use function Src\Engine\question;
 function isPrime(): bool
 {
     $name = greeting();
+    $j = 0;
     line('Answer "yes" if given number is prime. Otherwise answer "no".');
-    for ($i = 0, $j = 0; $i < 3 && $j === 0; $i++) {
+    for ($i = 0; $i < 3 && $j === 0; $i++) {
         $num = rand(1, 100);
         $question = "{$num}";
         $rightAnswer = 'yes';

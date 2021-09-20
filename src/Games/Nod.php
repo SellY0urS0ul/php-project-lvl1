@@ -12,8 +12,9 @@ use function Src\Engine\question;
 function nod(): bool
 {
     $name = greeting();
+    $j = 0;
     line('Find the greatest common divisor of given numbers.');
-    for ($i = 0, $j = 0; $i < 3 && $j === 0; $i++) {
+    for ($i = 0; $i < 3 && $j === 0; $i++) {
         $firstNumber = rand(1, 100);
         $secondNumber = rand(1, 100);
         $question = "{$firstNumber} {$secondNumber}";

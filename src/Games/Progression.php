@@ -12,8 +12,9 @@ use function Src\Engine\question;
 function progression(): bool
 {
     $name = greeting();
+    $j = 0;
     line('What number is missing in the progression?');
-    for ($i = 0, $j = 0; $i < 3 && $j === 0; $i++) {
+    for ($i = 0; $i < 3 && $j === 0; $i++) {
         $step = rand(1, 10);
         $firstNum = rand(0, 20);
         $missedNumId = rand(0, 9);
