@@ -20,12 +20,14 @@ function calc()
         $randomMath = array_rand($mathArr);
         $question = "{$firstNumber}{$mathArr[$randomMath]}{$secondNumber}";
         if ($mathArr[$randomMath] === ' + ') {
-            $rightAnswer = $firstNumber + $secondNumber;
+            $intAnswer = $firstNumber + $secondNumber;
+            $rightAnswer = "{$intAnswer}";
         } else {
-            $rightAnswer = $firstNumber * $secondNumber;
+            $intAnswer = $firstNumber * $secondNumber;
+            $rightAnswer = "{$intAnswer}";
         }
         $answer = question($question);
-        $j = isRightAnswer($answer, $rightAnswer, $name, $j, $i);
+        $j = isRightAnswer($answer, $rightAnswer, $name, $j);
     }
     $j = congratulations($j, $name);
 }

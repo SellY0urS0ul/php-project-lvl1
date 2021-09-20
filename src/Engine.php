@@ -12,7 +12,7 @@ function greeting(): string
     line("Hello, %s!", $name);
     return $name;
 }
-function isRightAnswer($answer, $rightAnswer, $name, $j): int
+function isRightAnswer(string $answer, string $rightAnswer, string $name, int $j): int
 {
     if ($answer == $rightAnswer) {
         line('Correct!');
@@ -23,13 +23,14 @@ function isRightAnswer($answer, $rightAnswer, $name, $j): int
     }
     return $j;
 }
-function congratulations($j, $name)
+function congratulations(int $j, string $name)
 {
     if ($j == 0) {
         line("Congratulations, %s!", $name);
     }
+    return null;
 }
-function question($question): string
+function question(string $question): string
 {
     line("Question: %s", $question);
     $answer = prompt('Your answer');

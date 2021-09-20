@@ -24,7 +24,7 @@ function progression()
             $nextNum += $step;
             array_push($progression, $nextNum);
         }
-        $rightAnswer = $progression[$missedNumId];
+        $rightAnswer = "{$progression[$missedNumId]}";
         $progression[$missedNumId] = '..';
         $question = implode(' ', $progression);
         $answer = question($question);

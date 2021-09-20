@@ -24,7 +24,7 @@ function nod()
                 $secondNumber = $secondNumber - $firstNumber;
             }
         }
-        $rightAnswer = $secondNumber;
+        $rightAnswer = "{$secondNumber}";
         $answer = question($question);
         $j = isRightAnswer($answer, $rightAnswer, $name, $j);
     }
