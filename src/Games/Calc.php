@@ -23,7 +23,7 @@ function calc()
             $rightAnswer = $firstNumber * $secondNumber;
         }
         line("Question: %s", $question);
-        $answer = prompt('Your answer: ');
+        $answer = prompt('Your answer');
         if ($answer == $rightAnswer) {
             line('Correct!');
         } else {

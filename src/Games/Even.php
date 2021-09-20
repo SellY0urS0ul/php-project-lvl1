@@ -14,7 +14,7 @@ function isEvenNumber()
     for ($i = 0, $j = 0; $i < 3 && $j === 0; $i++) {
         $randomNumber = rand(1, 100);
         line("Question: %s", $randomNumber);
-        $answer = prompt('Your answer: ');
+        $answer = prompt('Your answer');
         if (($randomNumber % 2) == 0 && $answer === 'yes') {
             line('Correct!');
         } elseif (($randomNumber % 2) == 0 && $answer === 'no') {
