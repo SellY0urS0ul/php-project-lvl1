@@ -7,6 +7,7 @@ use function cli\prompt;
 use function Src\Engine\greeting;
 use function Src\Engine\isRightAnswer;
 use function Src\Engine\question;
+use function Src\Engine\congratulations;
 
 function isEvenNumber(): bool
 {
@@ -23,8 +24,6 @@ function isEvenNumber(): bool
         }
         $j = isRightAnswer($answer, $rightAnswer, $name, $j);
     }
-    if ($j == 0) {
-        line("Congratulations, %s!", $name);
-    }
+    $j = congratulations($j, $name);
     return true;
 }

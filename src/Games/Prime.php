@@ -6,6 +6,7 @@ use function cli\line;
 use function cli\prompt;
 use function Src\Engine\greeting;
 use function Src\Engine\isRightAnswer;
+use function Src\Engine\congratulations;
 use function Src\Engine\question;
 
 function isPrime(): bool
@@ -24,8 +25,6 @@ function isPrime(): bool
         $answer = question($question);
         $j = isRightAnswer($answer, $rightAnswer, $name, $j);
     }
-    if ($j == 0) {
-        line("Congratulations, %s!", $name);
-    }
+    $j = congratulations($j, $name);
     return true;
 }

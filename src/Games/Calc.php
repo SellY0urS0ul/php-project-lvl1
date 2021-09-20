@@ -7,12 +7,14 @@ use function cli\prompt;
 use function Src\Engine\greeting;
 use function Src\Engine\isRightAnswer;
 use function Src\Engine\question;
+use function Src\Engine\congratulations;
 
 function calc(): bool
 {
     $name = greeting();
     line('What is the result of the expression?');
-    for ($i = 0, $j = 0; $i < 3 && $j === 0; $i++) {
+    $j = 0;
+    for ($i = 0; $i < 3 && $j === 0; $i++) {
         $firstNumber = rand(1, 10);
         $secondNumber = rand(1, 10);
         $mathArr = [' + ' , ' * '];
@@ -28,8 +30,6 @@ function calc(): bool
         $answer = question($question);
         $j = isRightAnswer($answer, $rightAnswer, $name, $j);
     }
-    if ($j == 0) {
-        line("Congratulations, %s!", $name);
-    }
+    $j = congratulations($j, $name);
     return true;
 }
