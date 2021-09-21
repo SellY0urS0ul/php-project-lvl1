@@ -15,7 +15,7 @@ function nod(): bool
     $stop = 0;
     $count = 3;
     line('Find the greatest common divisor of given numbers.');
-    for ($counter = 0; $counter < $count && $stop === 0; $count++) {
+    for ($counter = 0; $counter < $count && $stop === 0; $counter++) {
         $firstNumber = rand(1, 100);
         $secondNumber = rand(1, 100);
         $question = "{$firstNumber} {$secondNumber}";
