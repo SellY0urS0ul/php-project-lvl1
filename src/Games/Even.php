@@ -1,20 +1,21 @@
 <?php
 
-namespace Src\Games\Even;
+namespace Brain\Games\Even;
 
 use function cli\line;
 use function cli\prompt;
-use function Src\Engine\greeting;
-use function Src\Engine\isRightAnswer;
-use function Src\Engine\question;
-use function Src\Engine\congratulations;
+use function Brain\Engine\greeting;
+use function Brain\Engine\isRightAnswer;
+use function Brain\Engine\question;
+use function Brain\Engine\congratulations;
 
 function isEvenNumber(): bool
 {
     $name = greeting();
-    $j = 0;
+    $stop = 0;
+    $count = 3;
     line('Answer "yes" if the number is even, otherwise answer "no".');
-    for ($i = 0; $i < 3 && $j === 0; $i++) {
+    for ($counter = 0; $counter < $count && $stop === 0; $counter++) {
         $randomNumber = rand(1, 100);
         $question = "{$randomNumber}";
         $answer = question($question);
@@ -23,8 +24,8 @@ function isEvenNumber(): bool
         } else {
             $rightAnswer = 'no';
         }
-        $j = isRightAnswer($answer, $rightAnswer, $name, $j);
+        $stop = isRightAnswer($answer, $rightAnswer, $name, $stop);
     }
-    $j = congratulations($j, $name);
+    $stop = congratulations($stop, $name);
     return true;
 }

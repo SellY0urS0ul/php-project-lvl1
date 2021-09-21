@@ -1,35 +1,39 @@
 <?php
 
-namespace Src\Games\Calc;
+namespace Brain\Games\Calc;
 
 use function cli\line;
 use function cli\prompt;
-use function Src\Engine\greeting;
-use function Src\Engine\isRightAnswer;
-use function Src\Engine\question;
-use function Src\Engine\congratulations;
+use function Brain\Engine\greeting;
+use function Brain\Engine\isRightAnswer;
+use function Brain\Engine\question;
+use function Brain\Engine\congratulations;
 
 function calc(): bool
 {
     $name = greeting();
     line('What is the result of the expression?');
-    $j = 0;
-    for ($i = 0; $i < 3 && $j === 0; $i++) {
+    $stop = 0;
+    $count = 3;
+    for ($counter = 0; $counter < $count && $stop === 0; $counter++) {
         $firstNumber = rand(1, 10);
         $secondNumber = rand(1, 10);
-        $mathArr = [' + ' , ' * '];
+        $mathArr = [' + ' , ' * ', ' - '];
         $randomMath = array_rand($mathArr);
         $question = "{$firstNumber}{$mathArr[$randomMath]}{$secondNumber}";
         if ($mathArr[$randomMath] === ' + ') {
             $intAnswer = $firstNumber + $secondNumber;
             $rightAnswer = "{$intAnswer}";
-        } else {
+        } elseif ($mathArr[$randomMath] === ' * ') {
             $intAnswer = $firstNumber * $secondNumber;
+            $rightAnswer = "{$intAnswer}";
+        } else {
+            $intAnswer = $firstNumber - $secondNumber;
             $rightAnswer = "{$intAnswer}";
         }
         $answer = question($question);
-        $j = isRightAnswer($answer, $rightAnswer, $name, $j);
+        $stop = isRightAnswer($answer, $rightAnswer, $name, $stop);
     }
-    $j = congratulations($j, $name);
+    $stop = congratulations($stop, $name);
     return true;
 }

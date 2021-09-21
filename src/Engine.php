@@ -1,6 +1,6 @@
 <?php
 
-namespace Src\Engine;
+namespace Brain\Engine;
 
 use function cli\line;
 use function cli\prompt;
@@ -12,20 +12,20 @@ function greeting(): string
     line("Hello, %s!", $name);
     return $name;
 }
-function isRightAnswer(string $answer, string $rightAnswer, string $name, int $j): int
+function isRightAnswer(string $answer, string $rightAnswer, string $name, int $stop): int
 {
     if ($answer == $rightAnswer) {
         line('Correct!');
     } else {
         line("'{$answer}' is wrong answer ;(. Correct answer was '{$rightAnswer}'.");
         line("Let's try again, %s!", $name);
-        $j++;
+        $stop++;
     }
-    return $j;
+    return $stop;
 }
-function congratulations(int $j, string $name): bool
+function congratulations(int $stop, string $name): bool
 {
-    if ($j == 0) {
+    if ($stop == 0) {
         line("Congratulations, %s!", $name);
     }
     return true;

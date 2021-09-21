@@ -1,20 +1,21 @@
 <?php
 
-namespace Src\Games\Nod;
+namespace Brain\Games\Nod;
 
 use function cli\line;
 use function cli\prompt;
-use function Src\Engine\greeting;
-use function Src\Engine\isRightAnswer;
-use function Src\Engine\congratulations;
-use function Src\Engine\question;
+use function Brain\Engine\greeting;
+use function Brain\Engine\isRightAnswer;
+use function Brain\Engine\question;
+use function Brain\Engine\congratulations;
 
 function nod(): bool
 {
     $name = greeting();
-    $j = 0;
+    $stop = 0;
+    $count = 3;
     line('Find the greatest common divisor of given numbers.');
-    for ($i = 0; $i < 3 && $j === 0; $i++) {
+    for ($counter = 0; $counter < $count && $stop === 0; $count++) {
         $firstNumber = rand(1, 100);
         $secondNumber = rand(1, 100);
         $question = "{$firstNumber} {$secondNumber}";
@@ -27,8 +28,8 @@ function nod(): bool
         }
         $rightAnswer = "{$secondNumber}";
         $answer = question($question);
-        $j = isRightAnswer($answer, $rightAnswer, $name, $j);
+        $stop = isRightAnswer($answer, $rightAnswer, $name, $stop);
     }
-    $j = congratulations($j, $name);
+    $stop = congratulations($stop, $name);
     return true;
 }

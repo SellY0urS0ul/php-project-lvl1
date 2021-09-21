@@ -1,6 +1,6 @@
 <?php
 
-namespace Src\Cli;
+namespace Brain\Cli;
 
 use function cli\line;
 use function cli\prompt;

@@ -1,31 +1,32 @@
 <?php
 
-namespace Src\Games\Prime;
+namespace Brain\Games\Prime;
 
 use function cli\line;
 use function cli\prompt;
-use function Src\Engine\greeting;
-use function Src\Engine\isRightAnswer;
-use function Src\Engine\congratulations;
-use function Src\Engine\question;
+use function Brain\Engine\greeting;
+use function Brain\Engine\isRightAnswer;
+use function Brain\Engine\question;
+use function Brain\Engine\congratulations;
 
 function isPrime(): bool
 {
     $name = greeting();
-    $j = 0;
+    $stop = 0;
+    $count = 3;
     line('Answer "yes" if given number is prime. Otherwise answer "no".');
-    for ($i = 0; $i < 3 && $j === 0; $i++) {
+    for ($counter = 0; $counter < $count && $stop === 0; $counter++) {
         $num = rand(1, 100);
         $question = "{$num}";
         $rightAnswer = 'yes';
-        for ($k = 2; $k <= sqrt($num); $k++) {
-            if ($num % $k == 0) {
+        for ($primeCounter = 2; $primeCounter <= sqrt($num); $primeCounter++) {
+            if ($num % $primeCounter == 0) {
                 $rightAnswer = 'no';
             }
         }
         $answer = question($question);
-        $j = isRightAnswer($answer, $rightAnswer, $name, $j);
+        $stop = isRightAnswer($answer, $rightAnswer, $name, $stop);
     }
-    $j = congratulations($j, $name);
+    $stop = congratulations($stop, $name);
     return true;
 }
