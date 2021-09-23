@@ -8,6 +8,7 @@ use function Brain\Engine\greeting;
 use function Brain\Engine\isRightAnswer;
 use function Brain\Engine\question;
 use function Brain\Engine\congratulations;
+use function Brain\Engine\game;
 
 function calc(): bool
 {
@@ -15,7 +16,8 @@ function calc(): bool
     line('What is the result of the expression?');
     $stop = 0;
     $count = 3;
-    for ($counter = 0; $counter < $count && $stop === 0; $counter++) {
+    $dataArr = [];
+    for ($counter = 0; $counter < $count; $counter++) {
         $firstNumber = rand(1, 10);
         $secondNumber = rand(1, 10);
         $mathArr = [' + ' , ' * ', ' - '];
@@ -31,9 +33,8 @@ function calc(): bool
             $intAnswer = $firstNumber - $secondNumber;
             $rightAnswer = "{$intAnswer}";
         }
-        $answer = question($question);
-        $stop = isRightAnswer($answer, $rightAnswer, $name, $stop);
+        array_push($dataArr, [$question, $rightAnswer]);
     }
-    $stop = congratulations($stop, $name);
+    $stop = game($dataArr, $stop, $name);
     return true;
 }

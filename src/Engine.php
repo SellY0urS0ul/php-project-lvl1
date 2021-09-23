@@ -36,3 +36,28 @@ function question(string $question): string
     $answer = prompt('Your answer');
     return $answer;
 }
+function game(array $dataArr, $stop, $name) 
+{
+    $count = 3;
+    $counter = 0;
+    while ($stop == 0 && $counter < $count) {
+    foreach ($dataArr as $value) {
+    $question = $value[0];
+    $rightAnswer = $value[1];
+    line("Question: %s", $question);
+    $answer = prompt('Your answer');
+    if ($answer == $rightAnswer) {
+        line('Correct!');
+    } else {
+        line("'{$answer}' is wrong answer ;(. Correct answer was '{$rightAnswer}'.");
+        line("Let's try again, %s!", $name);
+        $stop++;
+        break;
+    }
+    $counter++;
+    }
+    }
+    if ($stop == 0) {
+        line("Congratulations, %s!", $name);
+    }
+}
