@@ -12,7 +12,6 @@ use function Brain\Engine\game;
 
 function calc(): bool
 {
-    $stop = 0;
     $count = 3;
     $dataArr = [];
     for ($counter = 0; $counter < $count; $counter++) {
@@ -33,6 +32,6 @@ function calc(): bool
         }
         array_push($dataArr, [$question, $rightAnswer]);
     }
-    $stop = game($dataArr, $stop, $name);
+    game($dataArr);
     return true;
 }
