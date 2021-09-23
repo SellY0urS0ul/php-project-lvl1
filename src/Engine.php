@@ -31,7 +31,7 @@ function game(array $dataArr, string $exercise): bool
     }
     return true;
 }
-function rightAnswerForCalc(array $mathArr, string $randomMath, int $firstNumber, int $secondNumber): string
+function rightAnswerForCalc(array $mathArr, int $randomMath, int $firstNumber, int $secondNumber): string
 {
     if ($mathArr[$randomMath] === ' + ') {
         $intAnswer = $firstNumber + $secondNumber;
