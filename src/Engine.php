@@ -38,6 +38,8 @@ function question(string $question): string
 }
 function game(array $dataArr, int $stop, string $name): bool
 {
+    $name = greeting();
+    line('What is the result of the expression?');
     $count = 3;
     $counter = 0;
     while ($stop == 0 && $counter < $count) {

@@ -12,8 +12,6 @@ use function Brain\Engine\game;
 
 function calc(): bool
 {
-    $name = greeting();
-    line('What is the result of the expression?');
     $stop = 0;
     $count = 3;
     $dataArr = [];
