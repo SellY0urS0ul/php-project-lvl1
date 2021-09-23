@@ -36,7 +36,7 @@ function question(string $question): string
     $answer = prompt('Your answer');
     return $answer;
 }
-function game(array $dataArr, $stop, $name)
+function game(array $dataArr, int $stop, string $name): bool
 {
     $count = 3;
     $counter = 0;
@@ -60,4 +60,5 @@ function game(array $dataArr, $stop, $name)
     if ($stop == 0) {
         line("Congratulations, %s!", $name);
     }
+    return true;
 }
