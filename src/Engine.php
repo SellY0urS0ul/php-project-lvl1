@@ -5,48 +5,19 @@ namespace Brain\Engine;
 use function cli\line;
 use function cli\prompt;
 
-function greeting(): string
+function game(array $dataArr, string $exercise): bool
 {
     line('Welcome to the Brain Game!');
     $name = prompt('May I have your name?');
     line("Hello, %s!", $name);
-    return $name;
-}
-function isRightAnswer(string $answer, string $rightAnswer, string $name, int $stop): int
-{
-    if ($answer == $rightAnswer) {
-        line('Correct!');
-    } else {
-        line("'{$answer}' is wrong answer ;(. Correct answer was '{$rightAnswer}'.");
-        line("Let's try again, %s!", $name);
-        $stop++;
-    }
-    return $stop;
-}
-function congratulations(int $stop, string $name): bool
-{
-    if ($stop == 0) {
-        line("Congratulations, %s!", $name);
-    }
-    return true;
-}
-function question(string $question): string
-{
-    line("Question: %s", $question);
-    $answer = prompt('Your answer');
-    return $answer;
-}
-function game(array $dataArr): bool
-{
-    $name = greeting();
-    line('What is the result of the expression?');
+    line("{$exercise}");
     $stop = 0;
     foreach ($dataArr as $value) {
         $question = $value[0];
         $rightAnswer = $value[1];
         line("Question: %s", $question);
         $answer = prompt('Your answer');
-        if ($answer == $rightAnswer) {
+        if ($answer === $rightAnswer) {
             line('Correct!');
         } else {
             line("'{$answer}' is wrong answer ;(. Correct answer was '{$rightAnswer}'.");
@@ -55,8 +26,64 @@ function game(array $dataArr): bool
             break;
         }
     }
-    if ($stop == 0) {
+    if ($stop === 0) {
         line("Congratulations, %s!", $name);
     }
     return true;
+}
+function rightAnswerForCalc(array $mathArr, string $randomMath, int $firstNumber, int $secondNumber): string
+{
+    if ($mathArr[$randomMath] === ' + ') {
+        $intAnswer = $firstNumber + $secondNumber;
+        $rightAnswer = "{$intAnswer}";
+    } elseif ($mathArr[$randomMath] === ' * ') {
+        $intAnswer = $firstNumber * $secondNumber;
+        $rightAnswer = "{$intAnswer}";
+    } else {
+        $intAnswer = $firstNumber - $secondNumber;
+        $rightAnswer = "{$intAnswer}";
+    }
+    return $rightAnswer;
+}
+function prime(int $num): string
+{
+    $rightAnswer = 'yes';
+    for ($primeCounter = 2; $primeCounter <= sqrt($num); $primeCounter++) {
+        if ($num % $primeCounter == 0) {
+            $rightAnswer = 'no';
+        }
+    }
+    return $rightAnswer;
+}
+function nodAlgoritm(int $firstNumber, int $secondNumber): string
+{
+    while ($firstNumber != $secondNumber) {
+        if ($firstNumber > $secondNumber) {
+            $firstNumber =  $firstNumber - $secondNumber;
+        } else {
+            $secondNumber = $secondNumber - $firstNumber;
+        }
+    }
+    return $rightAnswer = "{$secondNumber}";
+}
+function progressionGenerate(int $firstNum, int $step): array
+{
+    $progLength = 10;
+    $progression = [];
+    array_push($progression, $firstNum);
+    $nextNum = $firstNum;
+    for ($progCounter = 0; $progCounter < $progLength - 1; $progCounter++) {
+        $nextNum += $step;
+        array_push($progression, $nextNum);
+    }
+    return $progression;
+}
+function rightAnswerForEven(int $randomNumber): string
+{
+    if (($randomNumber % 2) == 0) {
+        $rightAnswer = 'yes';
+    } else {
+        $rightAnswer = 'no';
+    }
+    return $rightAnswer;
 }

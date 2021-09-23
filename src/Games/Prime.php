@@ -2,31 +2,20 @@
 
 namespace Brain\Games\Prime;
 
-use function cli\line;
-use function cli\prompt;
-use function Brain\Engine\greeting;
-use function Brain\Engine\isRightAnswer;
-use function Brain\Engine\question;
-use function Brain\Engine\congratulations;
+use function Brain\Engine\game;
+use function Brain\Engine\prime;
 
 function isPrime(): bool
 {
-    $name = greeting();
-    $stop = 0;
     $count = 3;
-    line('Answer "yes" if given number is prime. Otherwise answer "no".');
-    for ($counter = 0; $counter < $count && $stop === 0; $counter++) {
+    $exercise = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+    $dataArr = [];
+    for ($counter = 0; $counter < $count; $counter++) {
         $num = rand(1, 100);
         $question = "{$num}";
-        $rightAnswer = 'yes';
-        for ($primeCounter = 2; $primeCounter <= sqrt($num); $primeCounter++) {
-            if ($num % $primeCounter == 0) {
-                $rightAnswer = 'no';
-            }
-        }
-        $answer = question($question);
-        $stop = isRightAnswer($answer, $rightAnswer, $name, $stop);
+        $rightAnswer = prime($num);
+        array_push($dataArr, [$question, $rightAnswer]);
     }
-    $stop = congratulations($stop, $name);
+    game($dataArr, $exercise);
     return true;
 }

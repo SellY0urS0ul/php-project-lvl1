@@ -2,17 +2,13 @@
 
 namespace Brain\Games\Calc;
 
-use function cli\line;
-use function cli\prompt;
-use function Brain\Engine\greeting;
-use function Brain\Engine\isRightAnswer;
-use function Brain\Engine\question;
-use function Brain\Engine\congratulations;
 use function Brain\Engine\game;
+use function Brain\Engine\rightAnswerForCalc;
 
 function calc(): bool
 {
     $count = 3;
+    $exercise = 'What is the result of the expression?';
     $dataArr = [];
     for ($counter = 0; $counter < $count; $counter++) {
         $firstNumber = rand(1, 10);
@@ -20,18 +16,9 @@ function calc(): bool
         $mathArr = [' + ' , ' * ', ' - '];
         $randomMath = array_rand($mathArr);
         $question = "{$firstNumber}{$mathArr[$randomMath]}{$secondNumber}";
-        if ($mathArr[$randomMath] === ' + ') {
-            $intAnswer = $firstNumber + $secondNumber;
-            $rightAnswer = "{$intAnswer}";
-        } elseif ($mathArr[$randomMath] === ' * ') {
-            $intAnswer = $firstNumber * $secondNumber;
-            $rightAnswer = "{$intAnswer}";
-        } else {
-            $intAnswer = $firstNumber - $secondNumber;
-            $rightAnswer = "{$intAnswer}";
-        }
+        $rightAnswer = rightAnswerForCalc($mathArr, $randomMath, $firstNumber, $secondNumber);
         array_push($dataArr, [$question, $rightAnswer]);
     }
-    game($dataArr);
+    game($dataArr, $exercise);
     return true;
 }
