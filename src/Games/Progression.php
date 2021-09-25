@@ -2,15 +2,15 @@
 
 namespace Brain\Games\Progression;
 
-use function Brain\Engine\progressionGenerate;
+use Brain\Engine;
+
 use function Brain\Engine\game;
 
-function progression(): bool
+function playProgression(): void
 {
-    $count = 3;
     $exercise = 'What number is missing in the progression?';
     $dataArr = [];
-    for ($counter = 0; $counter < $count; $counter++) {
+    for ($counter = 0; $counter < COUNT; $counter++) {
         $step = rand(1, 10);
         $firstNum = rand(0, 20);
         $missedNumId = rand(0, 9);
@@ -21,5 +21,17 @@ function progression(): bool
         array_push($dataArr, [$question, $rightAnswer]);
     }
     game($dataArr, $exercise);
-    return true;
+    return;
+}
+function progressionGenerate(int $firstNum, int $step): array
+{
+    $progLength = 10;
+    $progression = [];
+    array_push($progression, $firstNum);
+    $nextNum = $firstNum;
+    for ($progCounter = 0; $progCounter < $progLength - 1; $progCounter++) {
+        $nextNum += $step;
+        array_push($progression, $nextNum);
+    }
+    return $progression;
 }

@@ -2,20 +2,29 @@
 
 namespace Brain\Games\Even;
 
-use function Brain\Engine\rightAnswerForEven;
+use Brain\Engine;
+
 use function Brain\Engine\game;
 
-function isEvenNumber(): bool
+function playEven(): void
 {
-    $count = 3;
     $exercise = 'Answer "yes" if the number is even, otherwise answer "no".';
     $dataArr = [];
-    for ($counter = 0; $counter < $count; $counter++) {
+    for ($counter = 0; $counter < COUNT; $counter++) {
         $randomNumber = rand(1, 100);
         $question = "{$randomNumber}";
         $rightAnswer = rightAnswerForEven($randomNumber);
         array_push($dataArr, [$question, $rightAnswer]);
     }
     game($dataArr, $exercise);
-    return true;
+    return;
+}
+function rightAnswerForEven(int $randomNumber): string
+{
+    if (($randomNumber % 2) == 0) {
+        $rightAnswer = 'yes';
+    } else {
+        $rightAnswer = 'no';
+    }
+    return $rightAnswer;
 }

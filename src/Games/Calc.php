@@ -2,23 +2,37 @@
 
 namespace Brain\Games\Calc;
 
-use function Brain\Engine\game;
-use function Brain\Engine\rightAnswerForCalc;
+use Brain\Engine;
 
-function calc(): bool
+use function Brain\Engine\game;
+
+function playCalc(): void
 {
-    $count = 3;
     $exercise = 'What is the result of the expression?';
     $dataArr = [];
-    for ($counter = 0; $counter < $count; $counter++) {
+    for ($counter = 0; $counter < COUNT; $counter++) {
         $firstNumber = rand(1, 10);
         $secondNumber = rand(1, 10);
-        $mathArr = [' + ' , ' * ', ' - '];
+        $mathArr = ['+' , '*', '-'];
         $randomMath = array_rand($mathArr);
-        $question = "{$firstNumber}{$mathArr[$randomMath]}{$secondNumber}";
+        $question = "{$firstNumber} {$mathArr[$randomMath]} {$secondNumber}";
         $rightAnswer = rightAnswerForCalc($mathArr, $randomMath, $firstNumber, $secondNumber);
         array_push($dataArr, [$question, $rightAnswer]);
     }
     game($dataArr, $exercise);
-    return true;
+    return;
+}
+function rightAnswerForCalc(array $mathArr, int $randomMath, int $firstNumber, int $secondNumber): string
+{
+    if ($mathArr[$randomMath] === '+') {
+        $intAnswer = $firstNumber + $secondNumber;
+        $rightAnswer = "{$intAnswer}";
+    } elseif ($mathArr[$randomMath] === '*') {
+        $intAnswer = $firstNumber * $secondNumber;
+        $rightAnswer = "{$intAnswer}";
+    } else {
+        $intAnswer = $firstNumber - $secondNumber;
+        $rightAnswer = "{$intAnswer}";
+    }
+    return $rightAnswer;
 }
