@@ -2,9 +2,9 @@
 
 namespace Brain\Games\Calc;
 
-use const Brain\Engine\ROUND_COUNT;
-
 use function Brain\Engine\game;
+
+use const Brain\Engine\ROUND_COUNT;
 
 function playCalc(): void
 {
