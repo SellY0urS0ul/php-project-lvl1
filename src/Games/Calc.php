@@ -23,15 +23,22 @@ function playCalc(): void
 }
 function rightAnswerForCalc(array $mathArr, int $randomMath, int $firstNumber, int $secondNumber): string
 {
-    if ($mathArr[$randomMath] === '+') {
-        $intAnswer = $firstNumber + $secondNumber;
-        $rightAnswer = "{$intAnswer}";
-    } elseif ($mathArr[$randomMath] === '*') {
-        $intAnswer = $firstNumber * $secondNumber;
-        $rightAnswer = "{$intAnswer}";
-    } else {
-        $intAnswer = $firstNumber - $secondNumber;
-        $rightAnswer = "{$intAnswer}";
+    switch ($mathArr[$randomMath]) {
+        case '+':
+            $intAnswer = $firstNumber + $secondNumber;
+            $rightAnswer = "{$intAnswer}";
+            break;
+        case '*':
+            $intAnswer = $firstNumber * $secondNumber;
+            $rightAnswer = "{$intAnswer}";
+            break;
+        case '-':
+            $intAnswer = $firstNumber - $secondNumber;
+            $rightAnswer = "{$intAnswer}";
+            break;
+        default:
+            throw new Exception('Другой математический знак.');
+            break;
     }
     return $rightAnswer;
 }
