@@ -2,6 +2,8 @@
 
 namespace Brain\Engine;
 
+const ROUND_COUNT = 3;
+
 use function cli\line;
 use function cli\prompt;
 
@@ -22,13 +24,9 @@ function game(array $dataArr, string $exercise): void
         } else {
             line("'{$answer}' is wrong answer ;(. Correct answer was '{$rightAnswer}'.");
             line("Let's try again, %s!", $name);
-            $stop++;
-            break;
+            return;
         }
     }
-    if ($stop === 0) {
         line("Congratulations, %s!", $name);
-    }
     return;
 }
-define('COUNT', 3);

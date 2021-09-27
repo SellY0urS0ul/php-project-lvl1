@@ -2,7 +2,7 @@
 
 namespace Brain\Games\Nod;
 
-use Brain\Engine;
+use const Brain\Engine\ROUND_COUNT;
 
 use function Brain\Engine\game;
 
@@ -10,7 +10,7 @@ function playGcd(): void
 {
     $exercise = 'Find the greatest common divisor of given numbers.';
     $dataArr = [];
-    for ($counter = 0; $counter < COUNT; $counter++) {
+    for ($counter = 0; $counter < ROUND_COUNT; $counter++) {
         $firstNumber = rand(1, 100);
         $secondNumber = rand(1, 100);
         $question = "{$firstNumber} {$secondNumber}";
@@ -18,7 +18,6 @@ function playGcd(): void
         array_push($dataArr, [$question, $rightAnswer]);
     }
     game($dataArr, $exercise);
-    return;
 }
 function nodAlgoritm(int $firstNumber, int $secondNumber): string
 {
