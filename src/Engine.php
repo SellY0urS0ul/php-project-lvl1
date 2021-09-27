@@ -27,6 +27,6 @@ function game(array $dataArr, string $exercise): void
             return;
         }
     }
-        line("Congratulations, %s!", $name);
+    line("Congratulations, %s!", $name);
     return;
 }
