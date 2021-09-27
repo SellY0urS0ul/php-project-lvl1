@@ -37,8 +37,7 @@ function rightAnswerForCalc(array $mathArr, int $randomMath, int $firstNumber, i
             $rightAnswer = "{$intAnswer}";
             break;
         default:
-            throw new Exception('Другой математический знак.');
-            break;
+            throw new \Exception('Другой математический знак.');
     }
     return $rightAnswer;
 }
