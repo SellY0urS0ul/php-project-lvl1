@@ -1,4 +1,5 @@
-### Hexlet tests and linter status:
+### Hexlet tests and linter status
+
 [![Actions Status](https://github.com/SellY0urS0ul/php-project-lvl1/workflows/hexlet-check/badge.svg)](https://github.com/SellY0urS0ul/php-project-lvl1/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/351a351bf8cf20da09f5/maintainability)](https://codeclimate.com/github/SellY0urS0ul/php-project-lvl1/maintainability)
 ![Github Actions](https://github.com/SellY0urS0ul/php-project-lvl1/actions/workflows/github-actions.yml/badge.svg)
@@ -21,23 +22,21 @@ Brain Games - it's a set of five console gamnes, built on the principle of popul
 ## Setup
 
 ```sh
-$ git clone https://github.com/SellY0urS0ul/php-project-lvl1.git
+git clone https://github.com/SellY0urS0ul/php-project-lvl1.git
 
-$ make install
+make install
 ```
 
 ## Run games
 
 ```sh
-$ make brain-even
+make brain-even
 
-$ make brain-calc
+make brain-calc
 
-$ make brain-gcd
+make brain-gcd
 
-$ make brain-progression
+make brain-progression
 
-$ make brain-prime
+make brain-prime
 ```
-
-

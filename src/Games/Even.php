@@ -18,7 +18,7 @@ function playEven(): void
     }
     playGame($gameData, $exercise);
 }
-function isEven(int $randomNumber): string
+function isEven(int $randomNumber): bool
 {
     return ($randomNumber % 2) === 0;
 }
