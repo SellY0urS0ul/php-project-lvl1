@@ -11,7 +11,7 @@
 
 ## Description
 
-Brain Games - it's a set of five console gamnes, built on the principle of popular mibile brain training applications. Each game asks questions that need to be answered correctly. After three correct answers, the game is considered to be completed. Wrong answers end the game and offer to play it again. Games:
+Brain Games - it's a set of five console gamnes, built on the principle of popular mobile brain training applications. Each game asks questions that need to be answered correctly. After three correct answers, the game is considered to be completed. Wrong answers end the game and offer to play it again. Games:
 
 - Calculator. Arithmetic expressions that need to be evaluated.
 - Progression. Finds missing numbers in a sequence of numbers.
