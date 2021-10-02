@@ -2,19 +2,18 @@
 
 namespace Brain\Engine;
 
-const ROUND_COUNT = 3;
-
 use function cli\line;
 use function cli\prompt;
 
-function game(array $dataArr, string $exercise): void
+const ROUNDS_COUNT = 3;
+
+function playGame(array $gameData, string $exercise): void
 {
     line('Welcome to the Brain Game!');
     $name = prompt('May I have your name?');
     line("Hello, %s!", $name);
     line("{$exercise}");
-    $stop = 0;
-    foreach ($dataArr as $value) {
+    foreach ($gameData as $value) {
         $question = $value[0];
         $rightAnswer = $value[1];
         line("Question: %s", $question);

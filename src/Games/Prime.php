@@ -2,29 +2,29 @@
 
 namespace Brain\Games\Prime;
 
-use function Brain\Engine\game;
+use function Brain\Engine\playGame;
 
-use const Brain\Engine\ROUND_COUNT;
+use const Brain\Engine\ROUNDS_COUNT;
 
 function playPrime(): void
 {
     $exercise = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-    $dataArr = [];
-    for ($counter = 0; $counter < ROUND_COUNT; $counter++) {
+    $gameData = [];
+    for ($counter = 0; $counter < ROUNDS_COUNT; $counter++) {
         $num = rand(1, 100);
         $question = "{$num}";
-        $rightAnswer = prime($num);
-        array_push($dataArr, [$question, $rightAnswer]);
+        $rightAnswer = isPrime($num) ? 'yes' : 'no';
+        array_push($gameData, [$question, $rightAnswer]);
     }
-    game($dataArr, $exercise);
+    playGame($gameData, $exercise);
 }
-function prime(int $num): string
+function isPrime(int $num): bool
 {
-    $rightAnswer = 'yes';
+    $counter = 0;
     for ($primeCounter = 2; $primeCounter <= sqrt($num); $primeCounter++) {
         if ($num % $primeCounter == 0) {
-            $rightAnswer = 'no';
+            $counter = 1;
         }
     }
-    return $rightAnswer;
+    return ($counter === 0);
 }

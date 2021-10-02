@@ -2,42 +2,41 @@
 
 namespace Brain\Games\Calc;
 
-use function Brain\Engine\game;
+use function Brain\Engine\playGame;
 
-use const Brain\Engine\ROUND_COUNT;
+use const Brain\Engine\ROUNDS_COUNT;
 
 function playCalc(): void
 {
     $exercise = 'What is the result of the expression?';
-    $dataArr = [];
-    for ($counter = 0; $counter < ROUND_COUNT; $counter++) {
+    $gameData = [];
+    for ($counter = 0; $counter < ROUNDS_COUNT; $counter++) {
         $firstNumber = rand(1, 10);
         $secondNumber = rand(1, 10);
-        $mathArr = ['+' , '*', '-'];
-        $randomMath = array_rand($mathArr);
-        $question = "{$firstNumber} {$mathArr[$randomMath]} {$secondNumber}";
-        $rightAnswer = rightAnswerForCalc($mathArr, $randomMath, $firstNumber, $secondNumber);
-        array_push($dataArr, [$question, $rightAnswer]);
+        $operators = ['+' , '*', '-'];
+        $randomOperator = array_rand($operators);
+        $randomOperatorStr = $operators[$randomOperator];
+        $question = "{$firstNumber} {$operators[$randomOperator]} {$secondNumber}";
+        $rightAnswer = rightAnswerForCalc($randomOperatorStr, $firstNumber, $secondNumber);
+        array_push($gameData, [$question, $rightAnswer]);
     }
-    game($dataArr, $exercise);
+    playGame($gameData, $exercise);
 }
-function rightAnswerForCalc(array $mathArr, int $randomMath, int $firstNumber, int $secondNumber): string
+function rightAnswerForCalc(string $randomOperatorStr, int $firstNumber, int $secondNumber): string
 {
-    switch ($mathArr[$randomMath]) {
+    switch ($randomOperatorStr) {
         case '+':
             $intAnswer = $firstNumber + $secondNumber;
-            $rightAnswer = "{$intAnswer}";
             break;
         case '*':
             $intAnswer = $firstNumber * $secondNumber;
-            $rightAnswer = "{$intAnswer}";
             break;
         case '-':
             $intAnswer = $firstNumber - $secondNumber;
-            $rightAnswer = "{$intAnswer}";
             break;
         default:
             throw new \Exception('Другой математический знак.');
     }
+    $rightAnswer = "{$intAnswer}";
     return $rightAnswer;
 }

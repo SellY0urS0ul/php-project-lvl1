@@ -2,24 +2,24 @@
 
 namespace Brain\Games\Nod;
 
-use function Brain\Engine\game;
+use function Brain\Engine\playGame;
 
-use const Brain\Engine\ROUND_COUNT;
+use const Brain\Engine\ROUNDS_COUNT;
 
 function playGcd(): void
 {
     $exercise = 'Find the greatest common divisor of given numbers.';
-    $dataArr = [];
-    for ($counter = 0; $counter < ROUND_COUNT; $counter++) {
+    $gameData = [];
+    for ($counter = 0; $counter < ROUNDS_COUNT; $counter++) {
         $firstNumber = rand(1, 100);
         $secondNumber = rand(1, 100);
         $question = "{$firstNumber} {$secondNumber}";
-        $rightAnswer = nodAlgoritm($firstNumber, $secondNumber);
-        array_push($dataArr, [$question, $rightAnswer]);
+        $rightAnswer = gcdLogic($firstNumber, $secondNumber);
+        array_push($gameData, [$question, "{$rightAnswer}"]);
     }
-    game($dataArr, $exercise);
+    playGame($gameData, $exercise);
 }
-function nodAlgoritm(int $firstNumber, int $secondNumber): string
+function gcdLogic(int $firstNumber, int $secondNumber): int
 {
     while ($firstNumber != $secondNumber) {
         if ($firstNumber > $secondNumber) {
@@ -28,5 +28,5 @@ function nodAlgoritm(int $firstNumber, int $secondNumber): string
             $secondNumber = $secondNumber - $firstNumber;
         }
     }
-    return $rightAnswer = "{$secondNumber}";
+    return $rightAnswer = $secondNumber;
 }

@@ -2,35 +2,34 @@
 
 namespace Brain\Games\Progression;
 
-use function Brain\Engine\game;
+use function Brain\Engine\playGame;
 
-use const Brain\Engine\ROUND_COUNT;
+use const Brain\Engine\ROUNDS_COUNT;
 
 function playProgression(): void
 {
     $exercise = 'What number is missing in the progression?';
-    $dataArr = [];
-    for ($counter = 0; $counter < ROUND_COUNT; $counter++) {
+    $gameData = [];
+    $progLength = 10;
+    for ($counter = 0; $counter < ROUNDS_COUNT; $counter++) {
         $step = rand(1, 10);
         $firstNum = rand(0, 20);
-        $missedNumId = rand(0, 9);
-        $progression = progressionGenerate($firstNum, $step);
+        $missedNumId = rand(0, $progLength - 1);
+        $progression = progressionGenerate($firstNum, $step, $progLength);
         $rightAnswer = "{$progression[$missedNumId]}";
         $progression[$missedNumId] = '..';
         $question = implode(' ', $progression);
-        array_push($dataArr, [$question, $rightAnswer]);
+        array_push($gameData, [$question, $rightAnswer]);
     }
-    game($dataArr, $exercise);
+    playGame($gameData, $exercise);
 }
-function progressionGenerate(int $firstNum, int $step): array
+function progressionGenerate(int $firstNum, int $step, int $progLength): array
 {
-    $progLength = 10;
     $progression = [];
-    array_push($progression, $firstNum);
     $nextNum = $firstNum;
-    for ($progCounter = 0; $progCounter < $progLength - 1; $progCounter++) {
-        $nextNum += $step;
+    for ($progCounter = 0; $progCounter < $progLength; $progCounter++) {
         array_push($progression, $nextNum);
+        $nextNum += $step;
     }
     return $progression;
 }
