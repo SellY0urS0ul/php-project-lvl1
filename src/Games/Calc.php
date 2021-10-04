@@ -22,7 +22,7 @@ function playCalc(): void
     }
     playGame($gameData, $exercise);
 }
-function rightAnswerForCalc(string $randomOperatorStr, int $firstNumber, int $secondNumber): string
+function rightAnswerForCalc(string $randomOperatorStr, int $firstNumber, int $secondNumber): int
 {
     switch ($randomOperatorStr) {
         case '+':
