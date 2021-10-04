@@ -18,7 +18,7 @@ function playCalc(): void
         $randomOperatorStr = $operators[$randomOperator];
         $question = "{$firstNumber} {$operators[$randomOperator]} {$secondNumber}";
         $rightAnswer = rightAnswerForCalc($randomOperatorStr, $firstNumber, $secondNumber);
-        array_push($gameData, [$question, $rightAnswer]);
+        array_push($gameData, [$question, "{$rightAnswer}"]);
     }
     playGame($gameData, $exercise);
 }
@@ -26,17 +26,16 @@ function rightAnswerForCalc(string $randomOperatorStr, int $firstNumber, int $se
 {
     switch ($randomOperatorStr) {
         case '+':
-            $intAnswer = $firstNumber + $secondNumber;
+            $rightAnswer = $firstNumber + $secondNumber;
             break;
         case '*':
-            $intAnswer = $firstNumber * $secondNumber;
+            $rightAnswer = $firstNumber * $secondNumber;
             break;
         case '-':
-            $intAnswer = $firstNumber - $secondNumber;
+            $rightAnswer = $firstNumber - $secondNumber;
             break;
         default:
             throw new \Exception('Другой математический знак.');
     }
-    $rightAnswer = "{$intAnswer}";
     return $rightAnswer;
 }

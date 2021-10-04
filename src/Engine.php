@@ -14,8 +14,7 @@ function playGame(array $gameData, string $exercise): void
     line("Hello, %s!", $name);
     line("{$exercise}");
     foreach ($gameData as $value) {
-        $question = $value[0];
-        $rightAnswer = $value[1];
+        [$question, $rightAnswer] = $value;
         line("Question: %s", $question);
         $answer = prompt('Your answer');
         if ($answer === $rightAnswer) {
